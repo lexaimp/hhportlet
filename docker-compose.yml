@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:5.7.29
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: lportal
+      MYSQL_USER: luser
+      MYSQL_PASSWORD: luser
+    ports:
+      - 3306:3306
+    container_name: mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+    container_name: adminer
